@@ -45,7 +45,7 @@ This project fuses one picture segment to another image but attains most of the 
 
 Source Image |  Target Image |  Blend Image
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://cloud.githubusercontent.com/assets/11666005/11612245/4894860e-9bc0-11e5-987a-45c781350b26.JPG)  |   ![](https://cloud.githubusercontent.com/assets/11666005/11612247/4897a8c0-9bc0-11e5-8712-858148205151.JPG)|  ![](https://cloud.githubusercontent.com/assets/11666005/11612267/0166917c-9bc1-11e5-8701-8a8f0c72e223.jpg)
+![](Poisson%20blend/www/img/IMG_1342.JPG)  |   ![](Poisson%20blend/www/img/floral-paper-canvas-or-parchment.jpg)|  ![](Poisson%20blend/www/img/mixed2.jpg)
 
 Here is a more detailed write-up of this project:
 [Gradient-Domain Fusion](https://htmlpreview.github.io/?https://github.com/elizazhi/computational-photography/blob/main/Poisson%20blend/www/webpage_proj3.html)
