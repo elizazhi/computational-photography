@@ -1,0 +1,288 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Project 3</h2>
+	<h4> <i>Liz Zhang </i></h4>
+	<h1>Gradient-Domain Fusion</h1>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		This project fuses one picture segment to another image but attains most of the gradients in the two images using Poisson blending.
+	</p>
+
+	<h3>II. Methods</h3>
+	<li>
+		<h4>Source of Target image</h4>
+		The segment of image to be blended into another image is captured by user drawing the outline on the source.
+		The backgournd image is the target. In the matter of blending two images, it is best that the target and the source image has similar brightness.
+	</li>
+	<li>
+		<h4>Poisson Blending</h4>
+		The actural blending part is solving for an image(v) that resembles the source(s) in the inside, and resembles the target(t) on the edges. This is done by solving a matrix that produces the least squared difference between the s and v gradients(both in the x direction and y direction.)
+	</li>
+	<li>
+		<h4>Mixed Poisson Blending</h4>
+		Instead of always minimizing the difference between v and the source gradients, minimize the difference between v and whichever gradient is bigger between the source and target. 
+	</li>
+
+	<h3>III. Results Demostration</h3>
+	<p>
+		The results of the blended images and their direct paste result are displayed below along with original target and sources:
+	</p>
+	<li>
+		Result of Poisson Blending:
+		<br>
+		<b>Result 1 :</b>
+		<table>
+	<tr>
+		<td>
+			Blended Result
+		</td>
+		<td>
+			Direct Paste
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="290" src="img/tahoe_duck.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/tahoe&duck.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Sourse Image
+		</td>
+		<td>
+			Target Image
+		</td>
+	</tr>
+		<td>
+			<img height="290" src="img/duck.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/tahoe.jpg"></img>
+		</td>
+	</tr>
+		</table>
+		<br>
+		
+			<b>Result 2 :</b>
+		
+		<table>
+	<tr>
+		<td>
+			Blended Result
+		</td>
+		<td>
+			Direct Paste
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="290" src="img/tardis_cali.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/tardisAndCali.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Sourse Image
+		</td>
+		<td>
+			Target Image
+		</td>
+	</tr>
+		<td>
+			<img height="290" src="img/tardis.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/cali.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+	<li>
+		Result of Mixed Poisson Blending:
+		<br>
+		<b>Result 1 :</b>
+		<table>
+	<tr>
+		<td>
+			Mixed Gradient Blended Result
+		</td>
+		<td>
+			Unmixed Gradient Blended Result
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="290" src="img/mixed.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/unmixed.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Sourse Image
+		</td>
+		<td>
+			Target Image
+		</td>
+	</tr>
+		<td>
+			<img height="290" src="img/quidditch.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/floral-paper-canvas-or-parchment.jpg"></img>
+		</td>
+	</tr>
+		</table>
+		<br>
+		<b>Result 2 :</b>
+		<table>
+	<tr>
+		<td>
+			Blended Result
+		</td>
+		<td>
+			Direct Paste
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="290" src="img/mixed2.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/raw(chinese).jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Sourse Image
+		</td>
+		<td>
+			Target Image
+		</td>
+	</tr>
+		<td>
+			<img height="290" src="img/IMG_1342.JPG"></img>
+		</td>
+		<td>
+			<img height="290" src="img/floral-paper-canvas-or-parchment.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+	<h3>IV. Difficulties</h3>
+	<p>
+		When the two images have different brightness levels, or the gradients between the images have twoo much difference, blending them together produces weird results.
+		Below is one failed example:
+	</p>
+		<table>
+	<tr>
+		<td>
+			Blended Result
+		</td>
+		<td>
+			Direct Paste
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="290" src="img/poor_after.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/poor_before.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Sourse Image
+		</td>
+		<td>
+			Target Image
+		</td>
+	</tr>
+		<td>
+			<img height="290" src="img/goose.jpg"></img>
+		</td>
+		<td>
+			<img height="290" src="img/glassgow.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	<h3>V. Bells and Whistles</h3>
+	<b>I.rgb2Grey</b>
+	<p>
+		Instead of directly changing rgb to grey, change the image to hsv space first, and extract the satuation and value channels.
+		<br>
+		Perform the mixed gradient poisson blending using the satuation channel as the target and value as source.
+		<br>
+		Below is the improved result:
+	</p>
+	
+		<table>
+	<tr>
+		<td>
+			Improved Color2Gray
+		</td>
+				<td>
+			Matlab rgb2Gray
+		</td>
+		<td>
+			Original
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="200" src="img/clearGrey.jpg"></img>
+		</td>
+		<td>
+			<img height="200" src="img/unclear_gray.jpg"></img>
+		</td>
+		<td>
+			<img height="200" src="img/colorBlindTest35.png"></img>
+		</td>
+	</tr>
+		</table>
+	<br>
+
+	<b>I.Edge Sharpening</b>
+	<p>
+		With a weighted identical filter distracting a mean filter, image edges where gradient is higher can be sharpened. Below shows some examples:
+	</p>
+	
+		<table>
+	<tr>
+		<td>
+			Original
+		</td>
+				<td>
+			Sharpened
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="350" src="img/night.jpg"></img>
+		</td>
+		<td>
+			<img height="350" src="img/night_sharp.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="350" src="img/sunset.jpg"></img>
+		</td>
+		<td>
+			<img height="350" src="img/sunset_sharp.jpg"></img>
+		</td>
+	</tr>
+		</table>
+
+</body>
+</html>

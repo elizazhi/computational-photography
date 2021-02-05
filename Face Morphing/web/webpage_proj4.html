@@ -1,0 +1,152 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Project 4</h2>
+	<h4> <i>Liz Zhang </i></h4>
+	<h1>Face Morphing</h1>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		This project takes the dataset of the class photos and does face morphing between my image and another. It also calculates the mean face of the class and does some fun stuff with face morphing.
+	</p>
+	
+	<h3>II. Methods</h3>
+	<li>
+		<h4>Delaunay Triangulation</h4>
+		The coresponding points of different images are connected and formed into triangles using Delaunay triangulation.
+	</li>
+	<li>
+		<h4>Cross Dissolve</h4>
+		Images are blended together using cross dissolving. 
+	</li>
+
+	<h3>III. Results Demostration</h3>
+	<li>
+		<h4>1. Face Morphing:</h4>
+		<p>The images of below morphing can be found in the "morph" folder.
+		</p>
+		<table>
+	<tr>
+		<td>
+			<img width="300" src="imgs/morph1.gif"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+	<li>
+		<h4>2. Average Face:</h4>
+		<table>
+	<tr>
+		<td>
+			<img height="300" src="imgs/meanFace_feathered.jpg"></img>
+		</td>
+		<td>
+			<img height="300" src="imgs/morph_avg.gif"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+
+	<h3>IV. Bells & Whistles</h3>
+<li>
+		<h4>1. Caracture:</h4>
+		<table>
+	<tr>
+		<td>
+			<img width="280" src="imgs/morph_cara.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+	<li>
+		<h4>2. Female face made more masculine:</h4>
+		<table>
+	<tr>
+		<td>
+			<img height="280" src="imgs/yizhizha.JPG"></img>
+		</td>
+		<td>
+			<img height="280" src="imgs/morph_f_m.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+		<li>
+		<h4>3. Male face made more feminine:</h4>
+		<table>
+	<tr>
+		<td>
+			<img height="280" src="imgs/morph_m_f.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+			<li>
+		<h4>4. Morphing between human face and animal:</h4>
+		<table>
+	<tr>
+		<td>
+			<img height="420" src="imgs/owl.gif"></img>
+		</td>
+		<td>
+			<img height="420" src="imgs/xue.gif"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+<li>
+		<h4>5. Morphing of full human form:</h4>
+		<table>
+	<tr>
+		<td>
+			<img height="420" src="imgs/lyb.gif"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+	<li>
+		<h4>6. PCA:</h4>
+		<p>
+			Below shows the first 10 Principle components:
+		</p>
+		<table>
+	<tr>
+		<td>
+			<img height="100" src="imgs/pca/pc_1.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_2.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_3.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_4.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_5.jpg"></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="100" src="imgs/pca/pc_6.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_7.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_8.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_9.jpg"></img>
+		</td>
+		<td>
+			<img height="100" src="imgs/pca/pc_10.jpg"></img>
+		</td>
+	</tr>
+		</table>
+	</li>
+
+</body>
+</html>

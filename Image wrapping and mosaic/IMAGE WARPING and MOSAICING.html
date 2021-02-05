@@ -1,0 +1,442 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Project 6-1</h2>
+	<h4> <i>Liz Zhang </i></h4>
+	<h3> Part I<h3>
+	<h1>IMAGE WARPING and MOSAICING</h1>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		This project does image mosaicing to make panoramic photos. It morphs the photos using perspective transformation and stitches the photos together to make a panoramic photo.
+	</p>
+
+	<h3>II. Methods and Results</h3>
+	<li>
+		<h4>Shoot and digitize pictures</h4>
+	</li>
+	<li>
+		<h4>Recover homographies</h4>
+	</li>
+	<li>
+		<h4>Warp the images</h4>
+		After the first two steps, I am able to rectify images using the homographies covered. Original photo and rectified results are shown below:
+		<br>
+			<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612191/7c39a8d8-9bbe-11e5-9131-d2b94533deab.jpg" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612214/466f560c-9bbf-11e5-888a-6cc663da77de.jpg" ></img>
+		</td>
+		
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612192/7c39d9f2-9bbe-11e5-96c4-378eca41a867.JPG" </img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612186/6ab47296-9bbe-11e5-8906-a1b8f2f49867.jpg" ></img>
+		</td>
+
+
+	</tr>
+			</table>
+		
+	</li>
+	<li>
+		<h4>Blend images into a mosaic</h4>
+		The results for stitching and blending is shown below:
+		<br>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612239/1fb90cf0-9bc0-11e5-8bbc-aa51837e0032.JPG" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612240/1fba4732-9bc0-11e5-8ca8-0df04309b708.JPG" ></img>
+		</td>
+		
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612241/1fbb2d64-9bc0-11e5-86c4-91bd4f3be092.JPG" </img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612250/70ef8734-9bc0-11e5-92ce-6c7a46ffaa64.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+			
+			<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612245/4894860e-9bc0-11e5-987a-45c781350b26.JPG" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612246/4894f4d6-9bc0-11e5-96ff-e3a232bcfdcc.JPG" ></img>
+		</td>
+		
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612247/4897a8c0-9bc0-11e5-8712-858148205151.JPG" </img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612267/0166917c-9bc1-11e5-8701-8a8f0c72e223.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+
+			<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612281/570db5ba-9bc1-11e5-8db0-e4293497702a.JPG" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612280/570d5606-9bc1-11e5-9093-20641d1139a5.JPG" ></img>
+		</td>
+		
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612279/570bff2c-9bc1-11e5-8484-08fbf80b30b2.JPG" </img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612277/4dc9c8ae-9bc1-11e5-98cb-98ecc6f05c34.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+<p>Laplacian blending example</p>
+The laplacian blending while works on some photos, does not give too good results on images with large blocks of same colors, for instance, see below:
+<br>
+<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612360/98a6f4f2-9bc4-11e5-8605-a5350080a3cd.jpg" ></img>
+<br>
+
+	<h3>III. Bells and Whistles</h3>
+	<p>
+		Blending and Compositing
+	</p>
+	<li>Put fake graffiti on buildings or chalk drawings on the ground
+	<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612294/ce64cf2c-9bc1-11e5-91e4-6bd62a545a33.jpg" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612293/ce61df56-9bc1-11e5-8938-6da912d6c278.jpg" </img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612295/ce65099c-9bc1-11e5-8b64-a46a7dc19e42.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+			</li>
+			<li>Replace a billboard with family photo
+	<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612303/13615a28-9bc2-11e5-914f-2eee28a87c79.jpg" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612305/1362be90-9bc2-11e5-84a4-bce96ed0be6f.jpg" ></img>
+		</td>
+		
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612304/1362034c-9bc2-11e5-9b41-a70ef268cb12.jpg" </img>
+		</td>
+	</tr>
+			</table>
+			</li>
+			<li>
+			Project a movie onto a building wall
+<table>
+	<tr>
+		<td>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/WVZLEWJ3HYo" frameborder="0" allowfullscreen></iframe>
+		</td>
+	</tr>
+			</table>
+		</li>
+
+		<p>
+		Spherical/Cylindrical/polar mapping
+		</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612317/e0f9fb98-9bc2-11e5-9fed-967e0ca10c67.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612316/e0f8b22e-9bc2-11e5-8602-a8de0990eace.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612315/e0f671f8-9bc2-11e5-9772-1b5eb341dd7c.jpg" </img>
+		</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612319/00f8daa4-9bc3-11e5-9d58-325bf8742108.jpg" </img>
+		</td>
+	</tr>
+			</table>
+
+			<p>
+360 Cylindrical panorama
+			</p>
+
+<table>
+	<tr>
+		<td>
+			<img height="200" src="https://cloud.githubusercontent.com/assets/11666005/11612340/f2af4ce8-9bc3-11e5-8277-d67566ed9852.jpg" </img>
+		</td>
+	</tr>
+			</table>	
+<h3> Part II<h3>
+	<h1>FEATURE MATCHING for AUTOSTITCHING</h1>
+	<h3>II. Methods and Results</h3>
+	<li>
+		<h4>Detecting corner features in an image</h4>
+		<p> I used harris.m to detect corners in an image. Below shows harris corners overlayed on an image, and the result for Adaptive Non-Maximal Suppression.</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612246/4894f4d6-9bc0-11e5-96ff-e3a232bcfdcc.JPG" ></img>
+		</td>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615584/5aba6902-9c33-11e5-8f7e-f28057d7f003.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615652/67498eae-9c34-11e5-9ccb-b62615eda233.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+	</li>
+	<li>
+		<h4>Extracting a Feature Descriptor for each feature point</h4>
+	</li>
+	<li>
+		<h4>Matching these feature descriptors between two images</h4>
+		<p>Below shows the result for matching between two images. The red points are selected corners in an image and the blue points are the matching corners of both images.</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615658/bacf0aae-9c34-11e5-9ef2-e7c3ae185d3f.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615657/baceabcc-9c34-11e5-92a5-678d62b3cc7b.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+	</li>
+	<li>
+		<h4>Use a robust method (RANSAC) to compute a homography </h4>
+		<p>Using a 4-point RANSAC method as described in the paper, I am able to find the robust homography matrix for morphing. Below shows the result of RANSAC. The green points are points chosen among the blue ones to calculate the homography</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615670/53b6b578-9c35-11e5-806b-047d79de7e5f.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615671/53b73b92-9c35-11e5-87de-2280b0dd66e7.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+	</li>
+	<h3>III. Final results</h3>
+	<p>The panoramic photo made using RANSAC is shown below:</p>
+	<table>
+		<tr>
+			<td>
+	<p>RANSAC</p>
+	</td>
+		<td>
+			<p>Manual</p>
+		</td>
+		</tr>
+		<tr>
+			<td>
+	<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615689/ca443b7a-9c35-11e5-9f9e-65d31552010b.jpg" ></img>
+	</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612267/0166917c-9bc1-11e5-8701-8a8f0c72e223.jpg" ></img>
+		</td>
+		<tr>
+		<td>
+	<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11620410/980928fa-9c80-11e5-959e-d82ee4396d4a.jpg" ></img>
+	</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11612277/4dc9c8ae-9bc1-11e5-98cb-98ecc6f05c34.jpg" ></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+	<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11620617/6d57fef4-9c82-11e5-98c2-8ca4d9de67ce.jpg" ></img>
+	</td>
+	<td>
+	<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11620658/f38a6566-9c82-11e5-8b15-05f203816041.jpg" ></img>
+	</td>
+
+	</tr>
+</table>
+
+
+<h3> Part III<h3>
+	<h1>Tour into the Picture:  Single View Modeling</h1>
+	<h3>II. Methods and Results</h3>
+	<li>
+		<p> Following the description of the paper from Horry et al., I made several image boxes, results are shown below:</p>
+
+		<p>The painting</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615784/d9540bc0-9c37-11e5-84a8-f26d52f7fa10.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616003/8876db14-9c3d-11e5-8b63-c03af054a66d.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616004/8876f0cc-9c3d-11e5-84ab-3043fea55db2.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616002/88766dc8-9c3d-11e5-843d-24470bb3d532.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616001/8875ca6c-9c3d-11e5-8b66-8f35766d6c2b.jpg" ></img>
+		</td>
+		<tr>
+			
+		</table>
+		<p>Below is the 5 faces of the box:</p>
+		<table>
+			<tr>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615781/d9504166-9c37-11e5-9559-79a5c874b343.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615783/d9519d7c-9c37-11e5-916a-e0d3fb064cee.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615780/d94f4770-9c37-11e5-8290-5e3756e7a89e.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615782/d9516546-9c37-11e5-9c22-5928e8ef4b31.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615779/d94eea64-9c37-11e5-992d-8d1408f216d7.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+			<p>San Francisco</p>
+				<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615806/6f1d14bc-9c38-11e5-9841-11544b17317f.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615808/6f1f0394-9c38-11e5-8593-ab8e3edccba3.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616052/f3e3198e-9c3e-11e5-9750-5cc4abf867f6.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616051/f3e2e536-9c3e-11e5-9985-9b59eec9f4f0.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11616050/f3dfc608-9c3e-11e5-9574-89c5ffc1e7c3.jpg" ></img>
+		</td>
+		<tr>
+		</table>
+		<p>Below is the 5 faces of the box:</p>
+		<table>
+			<tr>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615809/6f1f480e-9c38-11e5-85cd-28a47c048cff.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615805/6f1c4456-9c38-11e5-94bc-3938ee0a8d27.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615807/6f1dd992-9c38-11e5-8d3a-0b06ec75a169.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615810/6f23e7a6-9c38-11e5-9ac0-d33080e19a7b.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615811/6f2801ba-9c38-11e5-9167-1c715fecac43.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+			<p>The art gallery</p>
+			<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615905/f2e5f938-9c3a-11e5-9e24-9269fc8822d4.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615907/f2e750f8-9c3a-11e5-975a-12bb39d0f637.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615903/f2e3a34a-9c3a-11e5-9aa0-977aacabff8f.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615908/f2e7fde6-9c3a-11e5-946b-8e6e12449c7d.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615906/f2e66d82-9c3a-11e5-89d9-9c2525e195f2.jpg" ></img>
+		</td>
+		<tr>
+		</table>
+		<p>Below is the 5 faces of the box:</p>
+		<table>
+			<tr>
+				<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615904/f2e425cc-9c3a-11e5-98aa-caac3ffec087.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615909/f2ed8f72-9c3a-11e5-9582-3a0be7f3792d.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615910/f2ee0790-9c3a-11e5-9d0c-cf34b21e9a25.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615912/f2f1cc04-9c3a-11e5-8670-898a1d5d3b49.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11615911/f2f0525c-9c3a-11e5-90df-4c2c0c75bfcb.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+	</li>
+	<h3>III. Bells and Whistles</h3>
+	<p>1. Video tour into the image</p>
+	<iframe width="420" height="315" src="https://www.youtube.com/embed/Ms_F-U2wTr4" frameborder="0" allowfullscreen></iframe>
+	<p>2. Foreground extraction with alpha channel</p>
+
+	<table>
+		<tr>
+<td>
+	<iframe width="420" height="315" src="https://www.youtube.com/embed/30GnX6XeHCo" frameborder="0" allowfullscreen></iframe>
+</td>
+			<td><img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11619867/a1e7b5c2-9c7a-11e5-938e-cfd397f120fe.jpg" ></img>
+		</td>
+		<td><img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11619868/a1ea4f76-9c7a-11e5-8083-f61b6e924104.jpg" ></img>
+		</td>
+			
+<td>
+
+	</td>
+</tr>
+</table>
+<table>
+		<tr><td><img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11619862/98863ab2-9c7a-11e5-839f-688adc8b6998.jpg" ></img>
+		</td>
+		<td><img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11619864/98874358-9c7a-11e5-819a-4a1e12805d4f.jpg" ></img>
+		</td>
+			<td>
+	<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11619863/9886f2f4-9c7a-11e5-9852-1aaa8ca02078.jpg"></img>
+</td>
+<td>
+
+	</td>
+</tr>
+</table>
+</body>
+</html>

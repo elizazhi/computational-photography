@@ -1,0 +1,166 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Final Project : Tiny Planet</h2>
+	<h4> <i>Liz Zhang </i></h4>
+<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861630/3f9b8e74-a450-11e5-8c6e-decddf80ea42.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861631/3f9d6500-a450-11e5-9d63-8510f90f22ed.jpg" ></img>
+		</td>
+	</tr>
+</table>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		The purpose of this project is to morph ordinary images and videos into planet-like shapes. The basic technique includes the transformation between cartesian coordinate system and polar coordinate system. The project then ap- plied a series of special effects on the result like functions that controls size, bulging and blending. For videos, this project added endless loop effect.
+		The detailed approach is explained in the paper <a href="ZHANG-ICCP15.pdf">Tiny Planet : Morphing Images & Videos into Planet Shapes</a>
+	</p>
+
+	<h3>II. Methods and Results</h3>
+
+		<h4>"Globalize" the Image</h4>
+
+		<h5>Basic morphing & size, bulge, blending functions</h5>
+		<p>The basic technique involves converting the cartesian coordinates system into polar coordinates, then do the inverse morphing to get the pixels in the orignal image.</p>
+		<p>Without any extra special effects, a simple polar morph and the result of adding size, bulging and blending effects are shown side by side below:</p>
+<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861638/3fa77b62-a450-11e5-9832-e535cc82ec6a.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861636/3fa4b274-a450-11e5-9fe5-184cd91c825e.jpg" ></img>
+		</td>
+	</tr>
+</table>
+
+<p>Resutls of morphing the images are shown as below:</p>
+<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861657/5277087a-a450-11e5-9b00-403e2f45aaee.JPG" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861639/3fa91f08-a450-11e5-9117-b06de8560adb.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861667/62ce45a8-a450-11e5-8ad9-72ba937dc78a.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861642/3fafbbec-a450-11e5-81d2-544a84769992.jpg" ></img>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861668/62cf6906-a450-11e5-8246-b9a3b07272e4.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861641/3fae4f96-a450-11e5-988c-614d520c0c0f.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861666/62cb62c0-a450-11e5-9c08-f8342e1c4526.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861633/3f9e3e80-a450-11e5-9f9b-cebce64d0918.jpg" ></img>
+		</td>
+	</tr>
+</table>
+
+<h4>"Globalize" videos</h4>
+
+		<p>Applying the same morphing technique to videos and example results are shown below:</p>
+<table>
+	<tr>
+		<td>
+			<iframe src="https://player.vimeo.com/video/148790730" height="315" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/148790730">flagstaff</a> from <a href="https://vimeo.com/user45484885">elizazhi@gmail.com</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+		</td>
+		<td>
+			<iframe width="420" height="315" src="https://www.youtube.com/embed/0-Z6iii1hi4" frameborder="0" allowfullscreen></iframe>
+		</td>
+	</tr>
+</table>
+
+	<h4>Endless Loop</h4>
+
+		<h5>Corner detection for getting position of foreground object</h5>
+		<p>For endless loop, first the video needs to be rotated so that the trajectory of the foreground moving object is parallel to the planet center plane.</p>
+		<p>The way to do this is to detect corners of the foreground object, finding matching corners and calculate the trajectory from these points.</p>
+		<p>I used harris corners to detect corners in the image.</p>
+		<p>In order to get the corners of the moving car (the foreground) instead of getting corners all over the place, first get the difference between the two frames, then use the absolute difference as weight to the corner strength.</p>
+		<p>After getting the matching corners, we can calculate the mean position of these points and easily get the angle between the foreground object trajectory and the horizontal line.</p>
+<table>
+	<tr>
+		<td>
+			The image difference
+		</td>
+		<td>
+			Starting point corners
+		</td>
+		<td>
+			Ending point corners
+		</td>
+		<td>
+			Rotated image
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11862219/72fce848-a456-11e5-9a08-ccb6439be48b.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861637/3fa6224e-a450-11e5-8839-09f6e4d0dffc.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861640/3fa92f48-a450-11e5-8a69-29d967c8ca27.jpg" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861634/3f9e6266-a450-11e5-93d9-2a827f04d20d.jpg" ></img>
+		</td>
+	</tr>
+</table>
+
+
+
+	<li>
+		<h4>Slit scan to choose key frame</h4>
+		<p>For getting the frame in the video where the entering of the foreground object could match up with the leaving of it, I used a technique similar to slit scan.</p>
+		<p>
+Given the blending factor, it can be calculated which column of the image will be the exiting point for the moving object. Therefore, I slit scan the first column and the exiting column and get the sum of that column of pixels values.
+One example of slit scanning the exiting column of above example is shown below.</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861635/3fa3e2e0-a450-11e5-9fc5-9ce7bf22486a.jpg" ></img>
+		</td>
+	</tr>
+			</table>
+		</li>
+		<li>
+		<h4>Choose start and end frame by image difference</h4>
+		<p>After stitching the two identical videos by matching their entering frame, I used cross dissolving to blend the stitching frames.</p>
+		<p>
+Then I choose a random frame from the first half of the video, and get its difference with the frames from the second half. Theoretically there should be a frame whose difference with the frame chosen is zero since it is the composite of two identical videos with only time difference. Once the identical frames are found, the endless loop gif has one full loop.</p>
+<p>Results of the endless loop is shown below:</p>
+		<table>
+	<tr>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861689/8f04a54a-a450-11e5-866f-a399434a4622.gif" ></img>
+		</td>
+		<td>
+			<img height="315" src="https://cloud.githubusercontent.com/assets/11666005/11861688/8f04066c-a450-11e5-9b73-6026c1785deb.gif" ></img>
+		</td>
+	</tr>
+			</table>
+		</li>
+
+
+			
+</body>
+</html>

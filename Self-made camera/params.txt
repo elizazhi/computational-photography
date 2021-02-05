@@ -1,0 +1,82 @@
+Team: Liz Zhang(yizhizha) & Minghuang Ma(gingham)
+
+Device: 
+1. Box : dimensions-
+2. Canon EOS 6D 24-70mm Lens
+
+scene1:
+Focal Lens: 24
+ISO: 1250
+A: 4.5
+T: 25 secs
+
+scene2:
+Focal Lens: 24
+ISO: 1600
+A: 4.5
+T: 25 secs
+
+Other scenes:
+
+Focal Lens: 24
+ISO: 1600
+A: 2.8
+T: 25 secs
+
+2. 
+Focal Lens: 24
+ISO: 1000
+A: 4.5
+T: 15 secs
+
+3.
+Focal Lens: 24
+ISO: 1250
+A: 4.5
+T: 20 secs
+
+4.
+Focal Lens: 24
+ISO: 1000
+A: 5
+T: 20 secs
+
+Bells and Whistles:
+
+Multiple Exposure:
+1.1 With Pinhole Camera
+First Exposure : 10 secs
+Second Exposure: 5 secs
+Focal Lens: 24
+ISO: 1250
+A: 4.5
+
+1.2 With DSLR
+First Exposure : 10 secs
+Second Exposure: 6 secs
+Focal Lens:25
+ISO: 800
+A: 2.8
+
+2. Light Painting
+Focal Lens: 18
+ISO: 100
+A: 3.5
+T: 2.6 secs
+
+
+3. Writings on the Fog
+Focal Lens: 12
+ISO: 800
+A: 4.5
+T: 6 secs
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,151 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Project 1</h2>
+	<h4> <i>Liz Zhang </i></h4>
+	<h1>Images of the Russian Empire : Colorizing the Prokudin-Gorskii photo collection</h1>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		This project takes three channels (RGB) of the same image, aligns them properly, and outputs a color image.
+	</p>
+	<p>
+		The dataset this project uses comes from the glass plate collection of Sergei Mikhailovich Prokudin-Gorskii (1863-1944), who before the time color photography was invented, went ahead to record three exposures of scenes onto a glass plate using 3 filters (R, G, B respectively). 
+	</p>
+
+	<h3>II. Methods</h3>
+	<p>
+		This project takes several steps to mix the channels to get the end results:
+	</p>
+	<li>
+		<h4>Preprocessing</h4>
+		First, it reads the input image(which is a concatenation of 3 channels) and divids it into 3 of the same size;
+	</li>
+	<li>
+		<h4>Image Aligning</h4>
+		Second, it aligns the channels. In this project the blue channel is used as the standard, and R and G channels are aligned to it. This process method depends on the image size. 
+		<li>If the original input image is of jpg format (so that it is not too big), it applies the exhaustive method;
+		</li>
+		<li>If the original input image is of tif format (so that it is too big for exhausitive method), it uses image pyramid before calling the exhaustive function;
+		</li>
+		In order to avoid the pixels near the borders adding noise, this project takes the 20%-80% pixels at the center of all four directions to do the aligning instead of the whole image area.
+		<li>
+		In the examples shown below, images are shown with their offsets in the format of R:(r, c);G:(r,c). So if a Red channel by aligning with the blue, has to move 10 pixels downwards, and 20 pixels to the left, the representation would be R:(-10, 20).
+		</li>
+	</li>
+	<li>
+		<h4>Border Processing</h4>
+		Lastly, since the image aligned will display untidy borders, the last step is to crop out the messy border and leave a relatively neat margin for the color image. This is done by searching through 10% of image pixels at top, bottom, left and right, calculating the cumulative moving average of each channel, taking the difference between this average and the next row/column. And takes the index of the biggest difference (which indicates that there is an abrupt change in the channel, and this is usually the border of that image channel).
+	</li>
+
+	<h3>III. Results Demostration</h3>
+	<p>
+		The results of the algorithm are displayed below:
+	</p>
+	<li>
+		Result of a single run using exhaustive aligning method:
+		<table>
+	<tr>
+		<td>Images        </td>
+		<td><img src="jpg/result-00106v.jpg" width="400"></td>
+		<td><img src="jpg/result-00757v.jpg" width="400"></td>
+	</tr>
+	<tr>
+		<td>Offsets       </td>
+		<td>R: (9, -1); G: (4, 1)</td>
+		<td>R: (5, 5); G: (2, 3)</td>
+	</tr>
+		</table>
+	</li>
+
+	<li>
+		Result of image pyramid combined with exhaustive aligning method (The above images are not shown again):
+		<table>
+	<tr>
+		<td>JPG        </td>
+		<td><img src="jpg/result-00888v.jpg" width="200"></td>
+		<td><img src="jpg/result-00889v.jpg" width="200"></td>
+		<td><img src="jpg/result-00907v.jpg" width="200"></td>
+		<td><img src="jpg/result-00911v.jpg" width="200"></td>
+		<td><img src="jpg/result-01031v.jpg" width="200"></td>
+		<td><img src="jpg/result-01657v.jpg" width="200"></td>
+		<td><img src="jpg/result-01880v.jpg" width="200"></td>
+	</tr>
+	<tr>
+		<td>Offsets       </td>
+		<td>R: (12, 0); G: (6, 1)</td>
+		<td>R: (4, 3); G: (1, 2)</td>
+		<td>R: (6, 0); G: (2, 0)</td>
+		<td>R: (13, -1); G: (1, -1)</td>
+		<td>R: (4, 2); G: (1, 1)</td>
+		<td>R: (12, 1); G: (5, 1)</td>
+		<td>R: (14, 4); G: (6, 2)</td>
+	</tr>
+		</table> 
+	<br>
+			<table>
+	<tr>
+		<td>JPG        </td>
+		<td><a href="tif/big/result-00029u.tif"><img src="tif/small/result-00029u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-00087u.tif"><img src="tif/small/result-00087u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-00128u.tif"><img src="tif/small/result-00128u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-00458u.tif"><img src="tif/small/result-00458u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-00822u.tif"><img src="tif/small/result-00822u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-00892u.tif"><img src="tif/small/result-00892u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-01043u.tif"><img src="tif/small/result-01043u.jpg" width="175"></a></td>
+		<td><a href="tif/big/result-01047u.tif"><img src="tif/small/result-01047u.jpg" width="175"></a></td>
+	</tr>
+	<tr>
+		<td>Offsets       </td>
+		<td>R: (91, 36); G: (39, 18)</td>
+		<td>R: (108, 56); G: (48, 39)</td>
+		<td>R: (51, 38); G: (34, 25)</td>
+		<td>R: (87, 32); G: (43, 6)</td>
+		<td>R: (124, 33); G: (57, 25)</td>
+		<td>R: (42, 4); G: (16, 3)</td>
+		<td>R: (11, 18); G: (-16, 10)</td>
+		<td>R: (71, 33); G: (24, 20)</td>
+	</tr>
+		</table> 
+	</li>
+
+	<li>
+		Result of experiments on some of the Prokudin-Gorskii photo collection:
+	<table>
+	<tr>
+		<td>JPG        </td>
+		<td><a href="tif/big/result-00037a.tif"><img src="tif/small/result-00037a.jpg" width="200"></a></td>
+		<td><a href="tif/big/result-01114a.tif"><img src="tif/small/result-01114a.jpg" width="200"></a></td>
+		<td><a href="tif/big/result-01365a.tif"><img src="tif/small/result-01365a.jpg" width="200"></a></td>
+		<td><a href="tif/big/result-00148a.tif"><img src="tif/small/result-00148a.jpg" width="200"></a></td>
+		<td><a href="tif/big/result-01332a.tif"><img src="tif/small/result-01332a.jpg" width="200"></a></td>
+	</tr>
+		</table> 
+	</li>
+
+	<h3>IV. Bells and Whistles</h3>
+	<p>
+		As mentioned above, this project tries to clean up the border a bit after mixing the channels. It does not entirely get rid of all borders, since the elimination of border makes the photos seem imcomplete. Instead, it cleans up the border to make it neater but still preserve them at all sides. And below shows the before and after result of this step:
+	</p>
+	<li>	
+		<table>
+			<tr>
+				<td>
+					Before border processing:
+				</td>
+				<td>
+					After border processing:
+				</td>
+
+			</tr>
+			<tr><td><img src="pre_border1.jpg" width="400"></td>
+				<td><img src="post_border1.jpg" width="400"></td>
+			</tr>
+			<tr><td><img src="pre_border2.jpg" width="400"></td>
+				<td><img src="post_border2.jpg" width="400"></td>
+			</tr>
+		</table>		
+	</li>
+</body>
+</html>

@@ -1,0 +1,10 @@
+function im_crop = crop_rotated(im)
+row1 = min(find(im(1,:,1)>0));
+row_end = min(find(im(end,:,1)>0));
+col1 = min(find(im(:,1,1)>0));
+col_end = min(find(im(:,end,1)>0));
+col_min = min(row1,row_end);
+col_max = max(row1,row_end);
+row_min = min(col1,col_end);
+row_max = max(col1,col_end);
+im_crop = im(row_min:row_max,col_min:col_max,:);

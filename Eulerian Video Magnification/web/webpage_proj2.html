@@ -1,0 +1,99 @@
+<! DOCTYPE html>
+<html>
+<body>
+
+	<h2>15-463: Project 2</h2>
+	<h4> <i>Liz Zhang </i></h4>
+	<h1>Eulerian Video Magnification</h1>
+
+	<h3>I. Project Overview</h3>
+	<p>
+		This project visualizes subtle changes in the image through amplification of pixel colors in a certain frequency range.
+	</p>
+	<p>
+		The method was described in the paper <a href="http://people.csail.mit.edu/mrub/papers/vidmag.pdf">Eulerian Video Magnification for Revealing Subtle Changes in the World</a>. 
+	</p>
+
+	<h3>II. Methods</h3>
+	<li>
+		<h4>Preprocessing</h4>
+		First, the videos are decomposed into each image per frame;
+	</li>
+	<li>
+		<h4>Laplacian Pyramids</h4>
+		Second, each image is downsampled using Gaussian pyramids. Then Laplacian Pyramids are abtained by getting the difference between one Gaussian pyramid and the next upsampled Gaussian pyramid. The last level of gaussian pyramid becomes the last in Laplacian pyramid as well.
+	</li>
+	<li>
+		<h4>Band Pass Signals in the Frequency Domain</h4>
+		Next step is to bring one level of the pyramid to the frequency domain and getting each pixel's time series. The time frame would be the number of images in this video. The level chosen for this project is the last one in the Laplacian pyramid, which is the smallest one. 
+		<br>
+		The band pass filter chosen is the ideal filter, which suppresses everything outside the signal range of interest to be zero.
+	</li>
+	<li>
+		<h4>Amplification</h4>
+		After getting the band passed signal, the signal is amplified by multiplying a chosen factor. This signal was then added back to the original one.
+	</li>
+	<li>
+		<h4>Reconstruction</h4>
+		Lastly, the pyramid is reconstructed to obtain the image with amplified frequency. This step involves upsampling from the last level of the Laplacian pyramid and adding it back one by one.
+	</li>
+
+	<h3>III. Results Demostration</h3>
+	<p>
+		The results of the amplified videos are displayed below:
+	</p>
+	<li>
+		Result of a single run using exhaustive aligning method:
+		<table>
+	<tr>
+		<td>
+			<iframe width="420" height="315" src="https://www.youtube.com/embed/pjSt4KQzrw0" frameborder="0" allowfullscreen></iframe>
+		</td>
+		<td>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/A_DGq8ILpjo" frameborder="0" allowfullscreen></iframe>
+		</td>
+		<td>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/MpHmaxQHsUA" frameborder="0" allowfullscreen></iframe>
+		</td>
+	</tr>
+	<tr>
+		<td>Frequency Range (Band Pass Cutoffs): 50/60 ~ 60/60 Hz</td>
+		<td>Frequency Range (Band Pass Cutoffs): 140/60 ~ 160/60 Hz</td>
+		<td>Frequency Range (Band Pass Cutoffs): 75/60 ~ 95/60 Hz</td>
+	</tr>
+	<tr>
+		<td>Amplification Factor: 100</td>
+		<td>Amplification Factor: 500</td>
+		<td>Amplification Factor: 150</td>
+	</tr>
+		</table>
+	</li>
+	<h3>IV. Difficulties</h3>
+	<p>
+		The difficulties appeared to be on the choice of these factors:
+		<li>Which level of pyramid to choose;</li>
+		<li>What amplification factor to apply for each video;</li>
+		<li>Which channel(s) to amplify;</li>
+		<li>What paremeters to pass in the band pass filter;</li>
+		<li>The fft result in the different form for even and odd number of inputs.</li>
+	</p>
+	<h3>V. Bells and Whistles</h3>
+	<p>
+		For the video baby2, I used 6 levels in the Laplacian pyramid, and on the last level (the smallest one), a plot of power vs frequency after converting to the frequency domain and for the pixel at position (5,10) is shown below:
+	</p>
+	
+		<table>
+			<tr><td><img src="originalSignal.jpg" width="600"></td>
+			</tr>
+		</table>		
+
+	<p>Using the same time series as above, the plot of power vs frequency after band-pass filtering the signal in the frequency domain is shown below (the frequency range of interest is 140/60 ~ 160/60 Hz):
+	</p>
+
+		<table>
+			<tr><td><img src="withBandPass.jpg" width="600"></td>
+			</tr>
+		</table>		
+
+</body>
+</html>
