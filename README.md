@@ -67,7 +67,7 @@ Another key part of this image is image compressing and resizing using image pyr
 
 R, G, B images|  Colored image 
 :-------------------------:|:-------------------------:
-![](Self-made%20camera/web_img/demo-device-outter.JPG)  | ![](Self-made%20camera/web_img/scene1-small.jpg)
+![](Image%20Pyramid/webpage/01657v.jpg)  | ![](Image%20Pyramid/webpage/jpg/result-01657v.jpg)
 
 Here is a more detailed write-up of this project:
 [Colorizing the Prokudin-Gorskii photo collection](https://htmlpreview.github.io/?https://github.com/elizazhi/computational-photography/blob/main/Image%20Pyramid/webpage/webpage_proj1.html)
@@ -75,8 +75,7 @@ Here is a more detailed write-up of this project:
 ## Eulerian Video Magnification
 This project visualizes subtle changes in the image through amplification of pixel colors in a certain frequency range.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/A_DGq8ILpjo)
-<iframe width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![](Eulerian%20Video%20Magnification/web/15.jpg)](https://youtu.be/A_DGq8ILpjo)
 
 Here is a more detailed write-up of this project:
 [Eulerian Video Magnification](https://htmlpreview.github.io/?https://github.com/elizazhi/computational-photography/blob/main/Eulerian%20Video%20Magnification/web/webpage_proj2.html)
